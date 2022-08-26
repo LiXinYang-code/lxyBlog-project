@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in Action </title>
+</head>
+<body>
+<div th:fragment = "header">
+    <h1>Thymeleaf in action</h1>
+    <a href=" list.html" th:href="@{~/users}" >首页</a>
+</div>
+
+<!--/*@thymesVar id="userModel" type="org.thymeleaf.engine.Model"*/-->
+<h3 th:text="${userModel.title}">lixinyang</h3>
+<div>
+    <a href="form.html" th:href="@{form.html}">创建用户</a>
+</div>
+<table border="1">
+   <thead>
+        <tr>
+            <td>ID</td>
+            <td>Email</td>
+            <td>Name</td>
+        </tr>
+   </thead>
+    <tbody>
+    <!--/*@thymesVar id="userList" type="com.lxy.spring.boot.repository.UserRepositoryImpl"*/-->
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="3">没有用户信息</td>
+    </tr>
+        <tr th:each="user : ${userModel.userList}">
+            <!--/*@thymesVar id="user" type="java"*/-->
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.name}"></td>
+        </tr>
+    </tbody>
+</table>
+<div th:fragment = "footer">
+    <a href="https://LiXinYang.com">WelCome to LiXinYang</a>
+</div>
+</body>
+</html>
