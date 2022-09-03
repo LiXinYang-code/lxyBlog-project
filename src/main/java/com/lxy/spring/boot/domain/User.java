@@ -1,17 +1,26 @@
 package com.lxy.spring.boot.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
 /**
  * user 实体
  *
  */
+@Entity
+
+@Table(name="UserLxy")
 
 public class User {
 
+    @Id //main key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //self increment strategy
     private Long id ;//实体的唯一标识
     private String name;
     private String email;
 
-    public User(){
+    protected User(){
 
     }
 
@@ -47,6 +56,11 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public String toString(){
 
+        return  String.format("User[id=%d,name='%s',email='%s']",id,name,email);
+
+    }
 
 }
