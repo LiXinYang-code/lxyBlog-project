@@ -8,6 +8,7 @@ import javax.persistence.*;
  * user 实体
  *
  */
+
 @Entity
 
 @Table(name="UserLxy")
