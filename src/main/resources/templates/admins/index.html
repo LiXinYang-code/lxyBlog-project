@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Tether core CSS -->
+<link href="../../css/tether.min.css" th:href="@{/css/tether.min.css}" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<!--     <link href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	  crossorigin="anonymous">
+<!-- Font-Awesome CSS -->
+<link href="../../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+<!-- NProgress CSS -->
+<link href="../../css/nprogress.css" th:href="@{/css/nprogress.css}" rel="stylesheet">
+
+<!-- thinker-md CSS -->
+<link href="../../css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}" rel="stylesheet">
+
+<!-- bootstrap tags CSS -->
+<link href="../../css/component-tageditor.min.css" th:href="@{/css/component-tageditor.min.css}" rel="stylesheet">
+
+<!-- bootstrap chosen CSS -->
+<link href="../../css/component-chosen.min.css" th:href="@{/css/component-chosen.min.css}" rel="stylesheet">
+
+<!-- Custom styles -->
+<link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+<link href="../../css/thymeleaf-bootstrap-paginator.css" th:href="@{/css/thymeleaf-bootstrap-paginator.css}"
+	  rel="stylesheet">
+<link href="../../css/blog.css" th:href="@{/css/blog.css}" rel="stylesheet">
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.101.0">
+<title>Headers · Bootstrap v5.2</title>
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/headers/">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	  rel="stylesheet"
+	  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	  crossorigin="anonymous">
+<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+
+<meta name="theme-color" content="#712cf9">
+<style>
+	.bd-placeholder-img {
+		font-size: 1.125rem;
+		text-anchor: middle;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+	}
+
+	@media (min-width: 768px) {
+		.bd-placeholder-img-lg {
+			font-size: 3.5rem;
+		}
+	}
+
+	.b-example-divider {
+		height: 3rem;
+		background-color: rgba(0, 0, 0, .1);
+		border: solid rgba(0, 0, 0, .15);
+		border-width: 1px 0;
+		box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+	}
+
+	.b-example-vr {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 100vh;
+	}
+
+	.bi {
+		vertical-align: -.125em;
+		fill: currentColor;
+	}
+
+	.nav-scroller {
+		position: relative;
+		z-index: 2;
+		height: 2.75rem;
+		overflow-y: hidden;
+	}
+
+	.nav-scroller .nav {
+		display: flex;
+		flex-wrap: nowrap;
+		padding-bottom: 1rem;
+		margin-top: -1px;
+		overflow-x: auto;
+		text-align: center;
+		white-space: nowrap;
+		-webkit-overflow-scrolling: touch;
+	}
+</style>
+<!-- Custom styles for this template -->
+<link href="headers.css" rel="stylesheet">
+<title>Thymeleaf in Action </title>
+</head>
+<body>
+<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+	<div class="container">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarsContainer" aria-controls="navbarsExampleContainer" aria-expanded="false"
+				aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="/" th:href="@{/}">LxyBlog</a>
+
+
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="/blogs?order=new&tag=1">最新 <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/blogs?order=hot&tag=2">最热</a>
+			</li>
+			<form class="form-inline mt-2 mt-md-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="搜索">
+				<a href="/search?q=ww" class="btn btn-outline-secondary my-2 my-sm-0"><i class="fa fa-search"
+																						 aria-hidden="true"></i></a>
+			</form>
+
+		</ul>
+
+		<a href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">登录</a>
+		<a href="/register" class="btn btn-outline-success my-2 my-sm-0" type="submit">注册</a>
+
+
+	</div>
+</nav>
+
+<!-- header -->
+
+<!-- Page Content -->
+<div class="container blog-content-container">
+
+    <div class="row">
+
+        <!-- 左侧栏目 -->
+        <div class="col-md-4 col-xl-3">
+
+            
+	      <!-- 分类 -->
+	        <div class="card ">
+	            <h5 class="card-header"><i class="fa fa-bars" aria-hidden="true"></i> 菜单</h5>
+	
+	            <ul class="list-group">
+	                <a href="" class="list-group-item active" title="waylau">
+	                   	 用户管理
+	                </a>
+	                <a href="" class="list-group-item" title="waylau">
+	                    	角色授权 
+	                </a>
+	                <a href="" class="list-group-item" title="waylau">
+	                   	博客管理
+	                </a>
+	                <a href="" class="list-group-item" title="waylau">
+	                   	评论管理
+	                </a>
+	            </ul>
+	        </div>
+ 
+        </div>
+        
+   
+
+        <!-- 右侧栏目 -->
+
+
+        <div class="col-md-8 col-xl-9">
+            <div class="card">
+                        <div class="card-header bg-dark font-white">
+                            <i class="fa fa-sidebar fa-star-o " aria-hidden="true"></i> Users Overview
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                               <table class="table table-striped">
+								  <thead>
+								    <tr>
+								      <th>#</th>
+								      <th>Username</th>
+								      <th>Full Name</th>
+                                      <th>Role</th>
+                                      <th>Created At</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr>
+								      <th scope="row">1</th>
+								      <td>Mark</td>
+								      <td>Otto</td>
+                                      <td>@mdo</td>
+                                      <td>@mdo</td>
+								    </tr>
+								    <tr>
+								      <th scope="row">2</th>
+								      <td>Jacob</td>
+								      <td>Thornton</td>
+								      <td>@fat</td>
+                                      <td>@mdo</td>
+								    </tr>
+								    <tr>
+								      <th scope="row">3</th>
+								      <td>Larry</td>
+								      <td>the Bird</td>
+								      <td>@twitter</td>
+                                      <td>@mdo</td>
+								    </tr>
+								  </tbody>
+								</table>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination justify-content-center mb-4">
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">6</a></li>
+                    <li class="page-item"><a href="#" class="page-link">7</a></li>
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+<!-- footer -->
+<div class="container">
+	<footer class="py-3 my-4">
+		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+			<li class="nav-item"><a href="/users" class="nav-link px-2 text-muted">首页</a></li>
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">用户</a></li>
+		</ul>
+		<p class="text-center text-muted">&copy; 2022 LiXinYang Blog, Inc</p>
+	</footer>
+</div>
+</body>
+</html>
