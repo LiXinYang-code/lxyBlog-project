@@ -10,6 +10,45 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSRF -->
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+
+    <!-- Tether core CSS -->
+    <link href="../../css/tether.min.css" th:href="@{/css/tether.min.css}" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Font-Awesome CSS -->
+    <link href="../../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+    <!-- NProgress CSS -->
+    <link href="../../css/nprogress.css" th:href="@{/css/nprogress.css}" rel="stylesheet">
+
+    <!-- thinker-md CSS -->
+    <link href="../../css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}" rel="stylesheet">
+
+    <!-- bootstrap tags CSS -->
+    <link href="../../css/component-tageditor.css" th:href="@{/css/component-tageditor.css}" rel="stylesheet">
+
+    <!-- bootstrap chosen CSS -->
+    <link href="../../css/component-chosen.min.css" th:href="@{/css/component-chosen.min.css}" rel="stylesheet">
+
+    <!-- toastr CSS -->
+    <link href="../../css/toastr.min.css" th:href="@{/css/toastr.min.css}" rel="stylesheet">
+
+    <!-- jQuery image cropping plugin CSS -->
+    <link href="../../css/cropbox.css" th:href="@{/css/cropbox.css}" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../../css/thymeleaf-bootstrap-paginator.css" th:href="@{/css/thymeleaf-bootstrap-paginator.css}"
+          rel="stylesheet">
+    <link href="../../css/blog.css" th:href="@{/css/blog.css}" rel="stylesheet">
+
     <!-- Tether core CSS -->
     <link href="../../css/tether.min.css" th:href="@{/css/tether.min.css}" rel="stylesheet">
 
@@ -157,11 +196,10 @@
 <!-- header -->
 
 
+    <div class="container blog-content-container">
 
-    <div  class="container blog-content-container">
-
-        <form  >
-            <h2 class="form-signin-heading">博主账户注册</h2>
+        <form th:action="@{/register}"  method="post">
+            <h2 class="form-signin-heading">注册成为博主</h2>
 
             <div class="form-group col-md-5">
                 <label for="username" class="col-form-label">账号</label>
@@ -173,23 +211,22 @@
                 <input type="email" class="form-control" id="email" name="email" maxlength="50" placeholder="请输入邮箱">
             </div>
             <div class="form-group col-md-5">
-                <label for="username" class="col-form-label">姓名</label>
-                <input type="text" class="form-control" id="username" name="username" maxlength="20" placeholder="请输入姓名，至少2个字符，至多20个" >
+                <label for="name" class="col-form-label">姓名</label>
+                <input type="text" class="form-control" id="name" name="name" maxlength="20" placeholder="请输入姓名，至少2个字符，至多20个" >
             </div>
             <div class="form-group col-md-5">
                 <label for="password" class="col-form-label">密码</label>
                 <input type="password" class="form-control" id="password" name="password" maxlength="30" placeholder="请输入密码，字母或特殊符号和数字结合" >
             </div>
-            <div class="form-group col-md-5">
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary">提交</button>
             </div>
-
         </form>
-
     </div> <!-- /container -->
 
 
-<!-- footer -->
+
+    <!-- footer -->
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">

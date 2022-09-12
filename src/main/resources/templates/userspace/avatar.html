@@ -1,0 +1,107 @@
+<!-- CSRF -->
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+<!-- Tether core CSS -->
+<link href="../../css/tether.min.css" th:href="@{/css/tether.min.css}" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+<!-- Font-Awesome CSS -->
+<link href="../../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+<!-- NProgress CSS -->
+<link href="../../css/nprogress.css" th:href="@{/css/nprogress.css}" rel="stylesheet">
+
+<!-- thinker-md CSS -->
+<link href="../../css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}" rel="stylesheet">
+
+<!-- bootstrap tags CSS -->
+<link href="../../css/component-tageditor.css" th:href="@{/css/component-tageditor.css}" rel="stylesheet">
+
+<!-- bootstrap chosen CSS -->
+<link href="../../css/component-chosen.min.css" th:href="@{/css/component-chosen.min.css}" rel="stylesheet">
+
+<!-- toastr CSS -->
+<link href="../../css/toastr.min.css" th:href="@{/css/toastr.min.css}" rel="stylesheet">
+
+<!-- jQuery image cropping plugin CSS -->
+<link href="../../css/cropbox.css" th:href="@{/css/cropbox.css}" rel="stylesheet">
+
+<!-- Custom styles -->
+<link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+<link href="../../css/thymeleaf-bootstrap-paginator.css" th:href="@{/css/thymeleaf-bootstrap-paginator.css}"
+      rel="stylesheet">
+<link href="../../css/blog.css" th:href="@{/css/blog.css}" rel="stylesheet">
+
+    <style>
+        .cropImg {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #ccc;
+            color: #fff;
+            line-height: 300px;
+            text-align: center;
+            border: 1px dashed rgba(0, 0, 0, .4);
+        }
+
+        .cropImg > img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate3d(-50%, -50%, 0);
+            -moz-transform: translate3d(-50%, -50%, 0);
+            -ms-transform: translate3d(-50%, -50%, 0);
+            -o-transform: translate3d(-50%, -50%, 0);
+            transform: translate3d(-50%, -50%, 0);
+        }
+    </style>
+ 
+ 
+<div id="cropImg" class="cropImg">
+    <span>图片剪切</span>
+    <img src="">
+</div>
+<div class="crop" id="crop">
+    <input type="file" accept="image/*" class="crop-input">
+    <div class="crop-mask"></div>
+    <div class="crop-wrap">
+        <div class="crop-wrap-content">
+            <div class="crop-wrap-thum"></div>
+            <div class="crop-wrap-spinner">Loading...</div>
+        </div>
+        <div class="crop-wrap-group">
+            <a href="javascript:;" class="croped">剪切</a>
+        </div>
+         <div class="crop-wrap-group">
+            <a href="javascript:;" class="zoomIn">放大</a>
+            <a href="javascript:;" class="zoomOut">缩小</a>
+        </div>
+ 
+    </div>
+</div>
+<form  enctype="multipart/form-data"  id="avatarformid"  >
+</form> 
+
+<script>
+    var crop = document.querySelector('#cropImg');
+    var cropNote = crop.querySelector('span');
+    var cropImg = crop.querySelector('img');
+
+    var cropper = new Cropper({
+        el: '#crop',
+        cp: '#cropImg',
+        callback: function (dataURL, dataBlob) {
+
+            cropNote.style.display = 'none';
+            cropImg.style.display = 'block';
+            cropImg.src = dataURL;
+        }
+    });
+    
+    
+</script>
+ 

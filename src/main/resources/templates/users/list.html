@@ -5,6 +5,47 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF -->
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+
+
+    <!-- Tether core CSS -->
+    <link href="../../css/tether.min.css" th:href="@{/css/tether.min.css}" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Font-Awesome CSS -->
+    <link href="../../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+    <!-- NProgress CSS -->
+    <link href="../../css/nprogress.css" th:href="@{/css/nprogress.css}" rel="stylesheet">
+
+    <!-- thinker-md CSS -->
+    <link href="../../css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}" rel="stylesheet">
+
+    <!-- bootstrap tags CSS -->
+    <link href="../../css/component-tageditor.css" th:href="@{/css/component-tageditor.css}" rel="stylesheet">
+
+    <!-- bootstrap chosen CSS -->
+    <link href="../../css/component-chosen.min.css" th:href="@{/css/component-chosen.min.css}" rel="stylesheet">
+
+    <!-- toastr CSS -->
+    <link href="../../css/toastr.min.css" th:href="@{/css/toastr.min.css}" rel="stylesheet">
+
+    <!-- jQuery image cropping plugin CSS -->
+    <link href="../../css/cropbox.css" th:href="@{/css/cropbox.css}" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../../css/thymeleaf-bootstrap-paginator.css" th:href="@{/css/thymeleaf-bootstrap-paginator.css}"
+          rel="stylesheet">
+    <link href="../../css/blog.css" th:href="@{/css/blog.css}" rel="stylesheet">
+
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
@@ -124,9 +165,6 @@
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/users" class="nav-link active" aria-current="page">首页</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">用户</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">探索</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">创作</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">设置</a></li>
             </ul>
         </header>
     </div>
@@ -137,44 +175,106 @@
 
 
 <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<!-- header -->
 
 
 
 
-<h3 align="center" th:text="${userModel.title}">lixinyang</h3>
-<div align="center">
-    <a class="btn btn-default" href="/users/form.html" th:href="@{~/users/form}">创建用户</a>
+
+<div class="card-header bg-dark font-white">
+
+    <div class="input-group col-md-7 col-xl-6">
+
+        <input type="text" class="form-control" id="searchName"
+               placeholder="输入用户名称进行搜索"> <span class="input-group-btn">
+			<button class="btn btn-secondary" type="button" id="searchNameBtn">
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</button>
+		</span> <a class="btn btn-primary" data-toggle="modal"
+                   data-target="#flipFlop" role="button" id="addUser"><i
+            class="fa fa-plus" aria-hidden="true"></i></a>
+
+    </div>
 </div>
-<table class="table table-striped"  align="center">
-   <thead>
-        <tr>
-            <td>ID</td>
-            <td>Email</td>
-            <td>Name</td>
-        </tr>
-   </thead>
-    <tbody>
-    <tr th:if="${userModel.userList.size()} eq 0">
-        <td colspan="3">没有用户信息</td>
-    </tr>
-        <tr th:each="user : ${userModel.userList}">
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.email}"></td>
-            <td> <a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
-        </tr>
-    </tbody>
-</table>
+
+<div id="mainContainer" class="container">
+    <div id="mainContainerRepleace" class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="username">账号</th>
+                <th data-field="name">姓名</th>
+                <th data-field="email">邮箱</th>
+                <th data-field="authorities">角色</th>
+                <th data-field="operation">操作</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="user : ${userModel.userList}">
+                <td th:text="${user.id}">1</td>
+                <td th:text="${user.username}">1</td>
+                <td th:text="${user.name}">lixinyang</td>
+                <td th:text="${user.email}">lixinyang</td>
+                <td th:text="${user.authorities}">lixinyang</td>
+                <td>
+                    <div>
+                        <a class="blog-edit-user" data-toggle="modal"
+                           data-target="#flipFlop" role="button"
+                           data-th-attr="userId=${user.id}"> <i
+                                class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a> <a class="blog-delete-user" role="button"
+                                data-th-attr="userId=${user.id}"> <i class="fa fa-times"
+                                                                     aria-hidden="true"></i>
+                    </a>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+
+    </div>
+</div>
+
+<!-- The modal -->
+<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog"
+     aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">新增/编辑</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body" id="userFormContainer"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" id="submitEdit">提交</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="../../js/users/main.js" th:src="@{/js/users/main.js}"></script>
 
 
 
+
+<!-- footer -->
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/users" class="nav-link px-2 text-muted">首页</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">用户</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">探索</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">创作</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">设置</a></li>
         </ul>
         <p class="text-center text-muted">&copy; 2022 LiXinYang Blog, Inc</p>
     </footer>
